@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notas HTML</title>
+    <link rel="icon" href="html.png">
+</head>
+<body>
+    <p>Hay elementos HTML y cada elemento tiene atributos, algunos elementos se cierran, otros no. <br>
+        Todo esto se puede ver en la documentacion, existen multiples sitios de documentacion, uno de ellos es <a href="https://devdocs.io">https://devdocs.io</a> <br>
+        Para poner el boilerplate de HTML en VSCODE se hace con ! <br>
+        Un <em>compilador</em> online para ver HTML, CSS, Javascript es <a href="https://codepen.io">https://codepen.io</a> <br>
+        <a href="https://docs.emmet.io">https://docs.emmet.io</a> es una buena pagina para ver todos los emmets <br>
+        Los HTML se pueden abrir simplemente en el navegador <br>
+        <strong>Iconos:</strong> 
+        <ul>
+            <li>En <a href="https://www.flaticon.com/">flaticon.com</a> hay buenos iconos gratis.</li>
+            <li><a href="https://www.favicon.cc/">https://www.favicon.cc/</a> es un buen recurso para iconos. Podemos dibujarlos. Se incluyen en el <strong>head</strong> con un <strong>link</strong> igual que un <em>.css</em>. Pero su <strong>&lt...rel="icon"...&gt</strong></li>
+        </ul>        
+        <a href="https://chrome.google.com/webstore/detail/pesticide-for-chrome/">pesticide</a> es una buena herramienta que muestra las cajitas del HTML. Mantener presionado <strong>ctrl</strong> y mover el mouse sobre algun elemento nos muestra su descripcion. <br>
+        <a href="https://css3buttongenerator.com/">css3buttongenerator.com</a> es un generador de botones para la forma, color, hover, etc. 
+    </p> 
+    
+    <hr size="10" color="black">
+    <h1>Secciones HTML</h1>
+        <h2>head</h2>
+        <p>Contiene informacion de la pagina web y le dice al navegador como manejar la pagina <br>
+            title es el titulo de la pestaña <br>
+            <strong>meta</strong>(elemento) <strong>charset</strong> (atributo) es la codificacion del site <br>
+            utf-8 es la codificacion estandar <br>
+            <a href="https://unicode-table.com">https://unicode-table.com</a> es una buena pagina de referencia <br>
+            <strong>description</strong> (atributo) es lo que sale cuando se hace una busqueda en google <br>
+        </p>    
+        <h2>body</h2>
+        <p>Todo el cuerpo de la pagina</p>
+    <hr size="10" color="black">
+    <h1>Elementos HTML</h1>
+        <h2>Cabeceras</h2>
+        <p> <strong> h1, h2, h3, h4, h5, h6</strong> son las cabeceras</p>
+        <hr width>
+        <h2>Interlineado</h2>
+        <p>Para usar saltos de linea se usa <strong>br</strong> </p>
+        <hr>
+        Para lineas horizontales se usa <strong>hr</strong>
+        <hr>        
+        <h2>Estilo de texto</h2>
+        <p> <strong>p</strong> es para poner texto, parrafo</p>
+        <hr>
+        <strong>strong</strong> o <b>b</b> es para poner negrita <br>
+        siempre es mejor poner <strong>strong </strong> <br> <br>
+        <strong>em</strong> o <strong>i</strong> es para poner <i>énfasis</i>  o <i>italica </i> <br>
+        siempre es mejor usar <strong>em</strong>
+        <hr>
+        <h2>Listas</h2>
+        <strong>ul</strong> es una lista no-ordenada. Por defecto tiene puntos. Puede tener elementos: <br>
+        <ul>
+            <strong>ol</strong> lista ordenada. Por defecto tiene numeros <br>
+            <strong>li</strong> se usa para listar los elementos de la lista
+        </ul>
+        <hr>
+        <h2>Imagenes</h2>
+        <strong>img</strong> para poner imagenes, no necesita cerrarse. <br>
+        <ul>
+            <strong>src</strong>(atr) es la fuente de la imagen, puede ser una URL o imagen local <br>
+            <strong>alt</strong>(atr) es un texto que se muestra cuando no pueda cargar la imagen <br>
+            <strong>width, height</strong>(atr) para el ancho y altura respectivamente
+        </ul>        
+        <hr>
+        <h2>Links</h2>
+        <strong>a</strong> se usa para poner hiperlinks <br>
+        <ul>dentro de <strong>href</strong>(atr) va el link </ul>        
+        <hr>
+        <h2>Tablas</h2>
+        Primero filas, luego columnas <br>
+        <strong>table</strong> <br>        
+        <ul>
+            <strong>tr</strong> table row, filas <br>
+            <strong>td</strong> table data, elementos de la fila <br> <br>
+        </ul>
+        
+        Pero si queremos ser mas especificos podemos usar <br>
+        <strong>thead</strong> para la cabecera y <strong>th</strong> en vez de <strong>td</strong> <br>
+        <strong>tbody</strong> para el cuerpo <br>
+        <strong>tfoot</strong> para el pie de pagina <br>
+        Normalmente se usan los dos primeros <strong>thead</strong> y <strong>tbody</strong><br>
+        Se pueden anidar tablas 
+        <hr>
+        <h2>Formularios</h2>
+        <ul>
+            <li><strong>form</strong> tiene adentro:</li>
+            <ul>
+                <li><strong>action</strong>(atr) es la pagina a donde lleva el form</li>
+                <ul>
+                    <li><strong>mailto</strong>:email@mail.com</li>
+                </ul>
+                <li><strong>label</strong> va junto al campo a llenar</li>
+                <li><strong>input</strong>:</li>
+                <ul>
+                    <li><strong>type</strong>(atr) es el tipo del input, puede ser:</li>
+                    <ul>
+                        <li><strong>text</strong> cualquier texto</li> 
+                        <li><strong>submit</strong> para el boton</li> 
+                        <li><strong>color</strong> para seleccionador de color</li>
+                        <li><strong>checkbox</strong> para un checkbox</li>
+                        <li><strong>password</strong> para un campo password</li>
+                        <li><strong>email</strong> para un email, valida @, etc</li>
+                        <li><i>etc, etc</i></li>
+                    </ul>
+                </ul>
+                <li><strong>textarea</strong>:</li>
+                <ul>
+                    <li><strong>name</strong>(atr) </li>
+                    <li><strong>rows</strong>(atr): filas o largo</li>
+                    <li><strong>cols</strong>(atr): columnas o ancho</li>
+                </ul>
+            </ul>
+            
+        </ul>
+        <h2>DIVs</h2>
+        <p>
+
+        </p>
+
+</body>
+</html>

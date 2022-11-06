@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    <title>Notas Git</title>
+</head>
+<body>
+    <h1></h1>
+    Es una herramienta de control de versiones <hr>
+    <h1>Bases</h1>    
+    <strong>Inicializar</strong> estando dentro de una carpeta con <code>git init</code>. Esto crea el archivo oculto <strong>.git</strong>, el repositorio local<br>
+    Ver el <strong>estado</strong> del repositorio con <code>git status</code><br>
+    Agregar archivos o careptas al <strong>area de staging</strong> con <code>git add &ltarchivos&gt</code>. Agregar todos los archivos dentro de la carpeta con <code>git add .</code>, agregar con expresiones regulares, ej txt: <code>git add *.txt</code><br>
+    Agregar <strong>al repositorio</strong> con <code>git commit -m &ltmensaje&gt</code>, el flag <code>-m</code> toma el parametro <code>&ltmensaje&gt</code>. En caso no se use, nos redigirá al editor por defecto para insertar un gran mensaje <br>
+    Ver los <strong>logs</strong> con <code>git log</code>, se ve: el hash identificador, el autor, la fecha del commit y el mensaje. <br>
+    Una vez hay modificaciones(nuevos archivos, archivos modificados, archivos eliminados) se debe agregar y hacer commit. <br>
+    <strong>Comparar</strong> archivos pasados y cambios con <code>git diff &ltarchivo&gt</code>, lo rojo es lo eliminado y lo verde es lo agregado. En GitHub ver los commits<br>
+    <strong>Revertir</strong> a la ultima version anterior con <code>git checkout &ltarchivo&gt</code>
+    <hr>
+    
+    <h1>Repositorio remoto</h1>
+    Con un repositorio creado en GitHub, <strong>transferir</strong> los commits con <code>git remote add origin &ltlink&gt</code>, <code>origin</code> es el nombre del repositorio remoto <br>
+    Subir los commits con <code>git push -u origin master</code>, el flag <code>-u</code> vincula el repositorio remoto <code>origin</code> con el local, <code>master</code> es el nombre del branch en noviembre de 2022 se usa la rama <code>main</code>. Ver una representacion visual en GitHub en <strong>Insights->Network</strong><hr>
+
+    <h1>Ignorar</h1>
+    Primero se debe crear el archivo <strong>.gitignore</strong>, debe ser exactamente ese nombre ya que GIT busca este archivo. Agregar los archivos que queremos ignorar, comentar con <code>#</code><br>
+    <strong>Eliminar</strong> archivos del area de staging con <code>git rm --cached &ltarchivo&gt</code> <br>
+    <a href="github.com/github/gitignore">GitHub</a> tiene un repositorio con <strong>templates</strong> para ignorar en diferentes lenguajes, proyectos, etc. <hr>
+
+    <h1>Clonar repositorios</h1>
+    Con <code>git clone &ltrepositorio&gt</code>. Al clonar (a diferencia de descargar los archivos), se tiene el archivo <strong>.git</strong> con el historial, versiones, etc. <hr>
+
+    <h1>Branching y Merging</h1>
+    Normalmente se crean ramas para que varias personas trabajen por separado <br>
+    Podemos ver la <strong>rama actual</strong> con <code>git branch</code>, la que tenga un <code>*</code> es la actual. 
+    Crear una rama con <code>git branch &ltnombre&gt</code><br>
+    <strong>Cambiar</strong> de rama con <code>git checkout &ltrama&gt</code><br>
+    Se puede crear una rama y cambiar a ella en un paso con <code>git checkout -b &ltrama&gt</code><br>
+    Al cambiar de rama, los archivos se restauran a la version de la rama actual. <br>
+    Desde la rama principal <strong>combinar</strong> ramas con <code>git merge &ltrama&gt</code>, lo que lleva al editor por defecto para dejar un mensaje. La rama con la que se combinó aun existe. Todo esto se puede hacer desde GitHub, se llama <strong>pull request</strong> porque se está en la rama actual y se <strong>jala</strong> cambios desde otra rama. <hr>
+    <h1>Forking y pull requests</h1>
+    <img src="git.png" alt="no se puede cargar la imagen" width="1000px">
+
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notas CSS</title>
+    <link rel="icon" href="css-3.png">
+</head>
+<body>
+    <a href="https://www.colorhunt.co">Paletas de colores</a>
+    <hr>
+    <p>Se puede integrar CSS en 3 formas: 
+        <ul>
+            <li><strong>inline</strong>: dentro del tag <... style="color: red;"> por ejemplo</li>
+            <li><strong>Dentro del HTML</strong>: dentro del tag <strong>head</strong> ponemos el tag <strong>style</strong> definiendo body{ color: #EAF6F6;} por ejemplo</li>
+            <li><strong>Fuera del HTML</strong>: dentro del tag <strong>head</strong> ponemos el tag <strong>link</strong> y su atributo <strong>href</strong> debe linkear al archivo <em>.css</em> El <strong>type="text/css"</strong> no importa realmente.</li>
+        </ul>
+        Orden de prioridad: <strong>inline</strong>, luego el tag <strong>styles</strong> dentro del HTML y luego el <strong><em>.css</em></strong><hr>
+        Existen 3 selectors, por:
+        <ul>
+            <li><strong>tag</strong>: en el <em>.css</em> simplemente declaramos <strong>body{color:red;}</strong> por ejemplo</li>
+            <li><strong>class</strong>: en el <em>.css</em> especificamos un poco mas <strong>.rojo{color:red;}</strong>, pero tambien tenemos que ponerlo en el HTML dentro del tag que queremos <strong><... class="rojo"></strong> </li>
+            <li><strong>id</strong>: es mas especifico <strong>#id1 {color:black;}</strong> y en el HTML <strong><... id="id1"></strong></li>
+            <li><strong>pseudo clase</strong>: esta relacionado a los estados del elemento, por ejemplo: <strong>img:hover{background-color: blue;}</strong></li>
+        </ul>
+        Un tag puede tener varias clases, pero solo un id. <strong><... class="uno dos"></strong><br>
+        Una clase puede usarse cuantas veces quiera. El id solo puede usarse una vez en todo un HTML, en un solo tag. 
+    </p><hr>
+    <p>
+        <h2>The box model</h2>
+        <img src="box-model.jpg" alt="box-model"    >
+    </p><hr>
+    <h2>Propiedad display</h2>
+    <p>Existen cuatro propiedades display:
+        <ul>
+            <li><strong>block:</strong> no deja que haya elementos al costado, se puede cambiar su width y height. Elementos block comunes: p, h1-h6, div, ol, ul, li, form. </li>
+            <li><strong>inline:</strong> al costado siempre, no se puede cambiar su width. Elementos inline comunes: span, img, a. Si queremos por ejemplo subrayar una parte de la palabra no podemos usar 3 <strong>p</strong>, se verian en diferentes lineas; usamos un <strong>span</strong> y en su <em>.css</em> le ponemos <strong>.subrayado{text-decoration: underline;}</strong></li>
+            <li><strong>inline-block:</strong> </li>
+            <li><strong>none:</strong> </li>
+        </ul>
+        Se puede cambiar su propiedad <strong>display</strong> a cualquiera de los 4. Por ejemplo podemos cambiar un <strong>p</strong>, que por defecto es <strong>block</strong>, a <strong>inline</strong>; o a <strong>span</strong>, que por defecto es <strong>inline</strong>, a <strong>block</strong>. Sin embargo con eso se pierde y se gana la capacidad de cambiar <strong>width</strong> respectivamente. Entonces usamos <strong>inline-block</strong>, en donde se puede cambiar el <strong>width</strong> y es en la misma linea, <em>mas o menos</em> como funciona <strong>img</strong>. El <strong>display: none;</strong> simplemente no muestra en la pagina web; tambien se puede lograr eso con la propiedad <strong>visibility: hidden;</strong>
+    </p><hr>
+    <h2>Propiedad position</h2>
+    <p>
+        El contenido es lo que determina el tamaño original de cualquier caja. <br>
+        El orden viene del codigo <br>
+        Los hijos se ponen delante de los padres. Por ejemplo un <strong>span</strong> dentro de un <strong>p</strong>: Este es el <span style="background-color: blue; color: white;">span</span>
+        <h3>Posiciones:</h3>
+        <ul>
+            <li>Todos los tags son <strong>static</strong> por defecto. <br></li>
+            <li><strong>relative</strong> nos permite posicionar un elemento relativo a lo que hubiese sido posicionado si fuese estatico. Existen coordenadas para empujarlos desde <strong>top right bottom left</strong>; lo que realmente hace esto es darle un margen. Cuando se mueven los elementos, no empujan nada, solo se sobreponen. Se cambia su posicion <strong>relativa a su misma posicion</strong></li>
+            <li>Posicion <strong>absolute</strong> cambia <strong>relativa a su elemento padre</strong>. Cuando se usa posicion absoluta, no se toma en cuenta para los otros elementos, no hay relacion. Esta ahi, pero es como si no lo estara.  </li>
+            <li>Posicion <strong>fixed</strong> es para que se quede ahi al momento de scrollear, etc. </li>
+        </ul>
+    </p><hr>
+    <p>
+        <h2>Centrar elementos con CSS</h2>
+        <ul>
+            <li>Con la propiedad <strong>text-align: center;</strong> se centrara todo dentro del elemento que no tenga un <strong>width</strong> establecido</li>
+            <li>En caso tenga un <strong>width</strong> establecido, debemos usar la propiedad: <strong>margin: 0 auto 0 auto;</strong> (top, right, bottom, left) o <strong>margin: 0 auto;</strong> (top-bottom, right-left)</li>
+        </ul>
+    </p><hr>
+    <h2>Estilizar fuentes con CSS</h2>
+    <p>
+        Fuente:
+        <ul>
+            <li>Con la propiedad: <strong>font-family</strong>. Ej: font-family: 'Courier New', Courier, monospace; Se ponen varias fuentes por si alguna no esta disponible.</li>  
+            <li>Podemos embeber fuentes, desde google por ejemplo con <a href="https://fonts.google.com">fonts.google.com</a>. Seleccionamos las fuentes que queremos, copiamos el elemento <strong>link</strong> que nos genera google y lo pegamos dentro de la seccion <strong>head</strong> </li>
+        </ul>
+        Tamaño:
+        <ul>
+            <li>Con la propiedad: <strong>font-size</strong> Ej: font-size: 16px;</li>
+            <li>El tamaño se puede especificar en <strong>px</strong>, esto no cambia al modificar el tamaño de la fuente en el navegador ya que es estatico. Si queremos dinamico se puede usar <strong>%</strong>, que es equivalente a 16px. Si queremos un valor x en porcentaje dividimos entre x/16. Tambien se puede usar <strong>em</strong> (diferente al tag em), equivalente a 16 px. 16px = 100% = 1em. <strong>em</strong> es heredado por el elemento padre (asi este en px, %, etc), si se quiere anular eso, se usa <strong>rem</strong>. </li>
+        </ul>
+    </p><hr>
+    <h2>Propiedades float y clear</h2>
+    <p>
+        Si tenemos una imagen (u otro elemento) y queremos cuadrarla (wrap around) segun un texto podemos usar <strong>float: left;</strong>. <br> Si queremos que aun el texto se vaya a la siguiente linea y no envuelva la imagen podemos usar <strong>clear: right;</strong>
+    </p>
+</body>
+</html>
