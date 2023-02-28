@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid Layout System</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <style>
+        .red {
+            background-color: red;
+            border: solid 1px;
+        }
+
+        .blue {
+            background-color: lightblue;
+            border: solid 1px;
+        }
+
+        .green {
+            background-color: burlywood;
+            border: solid 1px;
+        }
+
+        .yellow {
+            background-color: yellow;
+            border: solid 1px;
+        }
+        .color5 {
+            background-color: coral;
+            border: solid 1px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Estatico</h1>
+    <p>Simplemente usando cols dentro de row</p>
+    <div class="row">
+        <div class="col red">
+            col
+        </div>
+        <div class="col red">
+            col
+        </div>
+    </div>
+    <br>
+    <p> Se puede especificar el ancho de cada elemento con col-x, x es un numero del 1-12</p>
+    <div class="row">
+        <div class="col-6 blue">
+            col-6
+        </div>
+        <div class="col-3 blue">
+            col-3
+        </div>
+        <div class="col-2 blue">
+            col-2
+        </div>
+        <div class="col-1 blue">
+            col-1
+        </div>
+    </div>
+
+    <hr>
+    <h1>Responsivo</h1>
+    <p>Usando col-md-6. md es por medium (o tamaño tablet), esto significa que el elemento ocupara 6 de 12 espacios a partir de tamaño medio, si es por debajo usará 100%.</p>
+    <div class="row">
+        <div class="col-md-6 green">
+            col-md-6
+        </div>
+        <div class="col-md-6 green">
+            col-md-6
+        </div>
+        <div class="col-md-6 green">
+            col-md-6
+        </div>
+        <div class="col-md-6 green">
+            col-md-6
+        </div>
+    </div>
+    <hr>
+    <p>Ahora queremos que en escritorio (lg) tenga 4 elementos, en tablet (md) 3 y en movil (sm) 2.</p>
+    <div class="row">
+        <div class="col-lg-3 col-md-4 col-sm-6 yellow">
+            elemento
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 yellow">
+            elemento
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 yellow">
+            elemento
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 yellow">
+            elemento
+        </div>
+    </div>
+    <p>En escritorio 6 columnas por fila, tablet 4, movil 1.</p>    
+    <div class="row">
+        <div class="col-lg-2 col-md-3 col-sm-12 color5">
+            elemento
+        </div>
+        <div class="col-lg-2 col-md-3 col-sm-12 color5">
+            elemento
+        </div>
+        <div class="col-lg-2 col-md-3 col-sm-12 color5">
+            elemento
+        </div>
+        <div class="col-lg-2 col-md-3 col-sm-12 color5">
+            elemento
+        </div>
+        <div class="col-lg-2 col-md-3 col-sm-12 color5">
+            elemento
+        </div>
+        <div class="col-lg-2 col-md-3 col-sm-12 color5">
+            elemento
+        </div>
+    </div>
+</body>
+
+<style>
+
+</style>
+
+</html>

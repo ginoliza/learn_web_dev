@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+</head>
+
+<body>
+    <h1>JavaScript</h1>
+    <p>
+        <b>datatypes</b> <br>
+        <b>alert:</b> sale una alerta con algun texto <br>
+        <b>prompt:</b> sale una alerta para ingresar algo, se puede capturar asignando a una variable <br>
+        <b>console.log:</b> imprimir por consola <br>
+    </p>
+
+    <p>
+        <b>limpiar consola:</b> ctrl+k, solo limpia consola. <br>
+        <b>limpiar consola y memoria:</b> click derecho en reload -> empty cache and hard reload
+    </p>
+
+    <p>
+        <b>Correr JavaScript en Chrome:</b>
+        Developer Tools-> Sources-> Snippets
+    </p>
+
+
+
+    <h2>Variables</h2>
+    <ul>
+        <li>Declarar: <code>var &lt;nombre&gt; = &lt;valor&gt;</code></li>
+        <li>Darles significado</li>
+        <li>No puede llamarse var</li>
+        <li>No puede comenzar con un numero, pero si contenerlos</li>
+        <li>No puede contener espacios, error de sintaxis</li>
+        <li>Unicos caracteres especiales: <code>_</code> , <code>?</code></li>
+        <li>Camelcasing: miNombre(buena practica)</li>
+        <li>Intercambiar contenido de variables: creando otra</li>
+    </ul>
+
+    <h2>Strings</h2>
+    <ul>
+        <li>Concatenar: <code>&lt;string&gt;+&lt;string&gt;</code></li>
+        <li>Tamaño: <code>&lt;variable&gt;.length</code></li>
+        <li>Tajadas: <code>&lt;variable&gt;.slice(&lt;inicio&gt;,&lt;final(no se incluye)&gt;)</code></li>
+        <li>Acceder al ultimo elemento: <code>&lt;variable&gt;.slice(-1)</code></li>
+        <li>A mayuscula: <code>&lt;variable&gt;.toUpperCase()</code></li>
+        <li>A minuscula: <code>&lt;variable&gt;.toLowerCase()</code></li>
+    </ul>
+
+    <p>
+    <h3>RETO:</h3> Un prompt que le pregunte al usuario su nombre y que imprima un saludo con el primer caracter del
+    nombre en mayuscula concatenado con el resto:
+    <code>
+    <pre>
+    var nombre = prompt("Nombre:");
+    alert("Hola " + nombre.slice(0, 1).toUpperCase()+nombre.slice(1,nombre.length));
+    </pre>
+</code>
+    </p>
+    <h2>Operadores</h2>
+    <code>
+    <pre>
+    x++
+    x--
+    ++x
+    --x
+    x+=2
+    x-=2
+    x*=2
+    x/=2
+    a%b: residuo de dividir a/b
+    </pre>
+</code>
+
+    <h2>Funciones</h2>
+    <b>Crear:</b>
+    <code>
+    <pre>
+    function &lt;nombre&gt;(<parametros>){
+        &lt;funcionalidad&gt;
+    }
+    </pre>
+</code>
+    <b>Usar:</b>
+    <code>
+    <pre>
+    &lt;nombre&gt;();
+    </pre>
+</code>
+
+    <p>
+    <h3>RETO:</h3> En <a href="https://stanford.edu/~cpiech/karel/ide.html">Karel Standford</a> practicar moviendo el
+    robot</p>
+
+    <h2>Math</h2>
+    <ul>
+        <li>Redondear hacia abajo: <code>Math.floor()</code></li>
+        <li>Redondear hacia arriba: <code>Math.ceil()</code></li>
+        <li>Potencia: <code>Math.pow(&lt;x&gt;, &lt;exponente&gt;);</code></li>
+        <li>Random del 0-1: <code>Math.random()</code></li>
+    </ul>
+
+
+    <p>
+    <h3>RETO:</h3> Funcion que diga cuantos dias, semanas y meses nos quedan por vivir hasta tener 90 años. <br>
+    <b>Input:</b> Edad Actual <br>
+    <b>Salida:</b> Te quedan X dias, Y semanas y Z meses de vida.
+    </p>
+
+    <code>
+    <pre>
+    function lifeInWeeks(edad) {
+        var dias = (90-edad)*365;
+        var semanas = (90-edad)*52;
+        var meses = (90-edad)*12;
+        console.log("You have "+dias+" days, "+semanas+" weeks, and "+meses+" months left.");
+    }
+
+    lifeInWeeks(56);
+    </pre>
+</code>
+
+    <h3>RETO:</h3>
+    <p>Crear una calculadora de BMI</p>
+
+    <code>
+<pre>
+    function bmiCalculator(weight, height){
+        return Math.round(weight/(height*height));
+    }
+    
+    bmiCalculator(65, 1.8);
+</pre>
+</code>
+
+    <h2>Condicional (if, else, else if): </h2>
+    <code>
+    <pre>
+    if(&lt;condicion&gt;){
+        &lt;ejecucion&gt;
+    }else{
+        &lt;ejecucion&gt;
+    }
+    </pre>
+</code>
+
+    <h2>Comparadores:</h2>
+    <pre>
+    ===
+    !==
+    ==
+    !=
+    &gt;
+    &lt;
+    &lt;=
+    &gt;=
+</pre>
+
+    <p>La diferencia entre === y == es que === tambien chequea el datatype</p>
+
+    <b>Combinar comparadores:</b>
+    <pre>
+    AND:  &&
+    OR:  ||
+    NOT: !
+</pre>
+
+    <h3>RETO:</h3>
+    <p>Calculadora de BMI con ifs</p>
+
+    <code>
+    <pre>
+    function bmiCalculator (weight, height) {
+        var BMI = Math.round(weight/(height*height));
+        if (BMI < 18.5) {
+            return ("Your BMI is "+BMI+", so you are underweight.");
+        }
+        if (BMI >=18.5 && BMI <= 24.9) {
+            return ("Your BMI is "+BMI+", so you have a normal weight.");
+        }
+        if (BMI > 24.9) {
+            return ("Your BMI is "+BMI+", so you are overweight.");
+        }
+    }
+    </pre>
+    </code>
+
+    <h2>Arrays</h2>
+
+    <ul>
+        <li>Lista, coleccion de items. Puede contener elementos de diferentes tipos.</li>
+        <li>Declarar: <code>var &lt;array&gt; = [&lt;item&gt;, ..., &lt;item&gt;];</code></li>
+        <li>Se puede imprimir con <code>console.log(&lt;array&gt;)</code></li>
+        <li>Acceder al elemento: <code>&lt;array&gt;[&lt;indice&gt;]</code></li>
+        <li>Acceder al ultimo elemento: <code>&lt;array&gt;[&lt;tamaño-1&gt;]</code></li>
+        <li>Tamaño: <code>&lt;array&gt;.length</code></li>
+        <li>Si un elemento existe: <code>&lt;array&gt;.includes(&lt;elemento&gt;)</code></li>
+        <li>Agregar elementos al final del array: <code>&lt;array&gt;.push(&lt;elemento&gt;)</code></li>
+        <li>Eliminar el ultimo elemento del array: <code>&lt;array&gt;.pop()</code></li>
+    </ul>
+    <b>Ejemplo: </b>
+    <code>
+        <pre>
+    var mollendo = ["Anibal", "Christian", "Gino", "Martin"];
+    var nombre = prompt("Nombre: ");
+    console.log(mollendo.includes(nombre));
+        </pre>
+    </code>
+
+    <h3>RETO</h3>
+    <p><b>FizzBuzz:</b> agregar a un array elementos, si el elemento es multiplo de 3 poner Fizz, si es multiplo de 5 poner Buzz, si es multiplo de ambos poner FizzBuzz.</p>
+    <code>
+    <pre>
+    var output = [];
+    var count = 1;
+    
+    function FizzBuzz(){
+        if(count%3===0 && count%5===0){
+            output.push("FizzBuzz");
+        }else if(count%3===0){
+            output.push("Fizz");
+        }else if(count%5===0){
+            output.push("Buzz");
+        }else{
+            output.push(count);
+        }
+        count++;
+        console.log(output);
+    }
+    
+    FizzBuzz();
+    </pre>
+    </code>
+
+    <h3>RETO</h3>
+    <p>Seleccionar aleatoriamente de una lista de strings</p>
+    <code>
+    <pre>
+    var names = ["Angela", "Ben", "Jenny", "Michael", "Chloe"];
+
+    function whosPaying(names) {
+        var a = Math.floor(Math.random()*names.length);    
+        console.log(names[a]+" is going to buy lunch today!");    
+    }
+
+    whosPaying(names);
+    </pre>
+    </code>
+    <h2>Loops - While</h2>
+    <ul>
+        <li>Declarar: <code><pre>
+    while(&lt;condicion&gt;){
+        &lt;codigo&gt;
+    }</pre></code></li>
+    <li>
+        Agregando while a <b>FizzBuzz</b>:
+        <code><pre>
+var output = [];
+var count = 1;
+
+function FizzBuzz(){
+    while(count&lt;100){
+        if(count%3===0 && count%5===0){
+            output.push("FizzBuzz");
+        }else if(count%3===0){
+            output.push("Fizz");
+        }else if(count%5===0){
+            output.push("Buzz");
+        }else{
+            output.push(count);
+        }
+        count++;
+        console.log(output);
+    }
+}
+
+FizzBuzz();
+        </pre></code>
+    </li>
+    </ul>
+
+    <h3>RETO</h3>
+    <p><b>99 Bottles of Beer</b>: Imprimir "99. 98 ... " llegar a 0</p>
+
+    <h2>Loops - For</h2>
+    <ul>
+        <li>Declarar (ej):
+            <code><pre>
+    for(var i=0;i&lt;10;i++){
+        console.log("a");
+    }
+            </pre></code>
+        </li>
+        <li>
+            Adaptando FizzBuzz de While a For:
+            <code><pre>
+var output = [];
+
+function FizzBuzz(){
+    for(var count = 1;count&lt;100;count++){
+        if(count%3===0 && count%5===0){
+            output.push("FizzBuzz");
+        }else if(count%3===0){
+            output.push("Fizz");
+        }else if(count%5===0){
+            output.push("Buzz");
+        }else{
+            output.push(count);
+        }        
+        console.log(output);
+    }
+}
+
+FizzBuzz();
+            </pre></code>
+        </li>
+    </ul>
+    <h3>RETO</h3>
+    <p><b>Fibonacci:</b> [0, 1, 1, 2, 3, 5, 8, 13, 21, ...]</p>
+    <code>
+        <pre>
+    function fibonacciGenerator (n) {
+        //Do NOT change any of the code above 👆
+            var sequence = [0, 1];
+            //Write your code here:
+            if(n === 1){
+                return [0]
+            }else if(n === 2){
+                return sequence;
+            }else{
+                for(var i=0;i<(n-2);i++){
+                    sequence.push(sequence[sequence.length -1] + sequence[sequence.length -2]);
+                }
+            }    
+            return sequence;
+            //Return an array of fibonacci numbers starting from 0.
+            
+        //Do NOT change any of the code below 👇
+        }
+        </pre>
+    </code>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
