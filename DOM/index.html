@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <h1>DOM</h1>
+    <h2>Como incluir JavaScript en HTML</h2>
+    <ol>
+        <li><b>Inline:</b> Dentro del tag body con el atributo onload con comillas. <br>
+            Ejemplo: <code>&lt;body onload="alert('Hello');"&gt;</code> <br> <a href="demo0.html">Demo</a> <br>
+            Es mejor evadir esta forma
+        </li>
+        <li><b>Interno:</b> Usando el tag Script, ejemplo:
+            <code><pre>
+    &lt;script type="text/javascript"&gt;
+        alert("Hello");
+    &lt;/script&gt;
+            </pre>
+            </code>
+            <a href="demo1.html">Demo</a>
+        </li>
+        <li>
+            <b>Externo: </b> Con el tag script, especificando el atributo src. Ej:
+            <code>
+                <pre>
+    &lt;body&gt;
+        &lt;h1&gt;Hello&lt;/h1&gt;
+        &lt;script src="demo2.js"&gt;&lt;/script&gt;
+    &lt;/body&gt;
+                </pre>
+            </code>
+            <a href="demo2.html">Demo</a>
+        </li>
+    </ol>
+    <p>Donde se pone la etiqueta script es muy importante, ya que HTML se ejecuta de arriba hacia abajo.</p>
+    <hr>
+    <h2>Document Object Model - DOM</h2>
+    <p>
+        Hasta ahora las paginas y su apariencia han sido estaticas, queremos que sea dinamica. El DOM cataloga la pagina
+        en elementos individuales que podemos manipular. Se representa en un arbol, como jerarquia, con padres, hijos,
+        etc. </p>
+    <a href="demo3.html">Ejemplo</a> <br>
+    Cargar el ejemplo, entrar a la consola de desarrollador.
+    <ul>
+        <li><code>document;</code> nos da todo el documento. Al desplegar podemos ver todos los elementos en el HTML.
+        </li>
+        <li><code>document.firstElementChild;</code> nos da el primer hijo del elemento. El primer elemento es el tag
+            html, el primer hijo de este es el head y el segundo el body.</li>
+        <li><code>document.lastElementChild;</code> nos da el último hijo del elemento. </li>
+        <li>Guardar estos elementos en variables. Por ejemplo para obtener el h1: <br>
+            <code>var heading = document.firstElementChild.lastElementChild.firstElementChild;</code>
+        </li>
+        <li>Cambiar lo que contiene el HTML con <code>.innerHTML</code> Ej: <code>heading.innerHTML = "Good Bye";</code>
+        </li>
+        <li>Cambiar el color con <code>heading.style.color = "red";</code></li>
+        <li><code>document.querySelector("input").click();</code> nos permite buscar el <b>selector</b> (dentro del css,
+            lo que está antes de las llaves {}) input y simular un
+            click. Al correr esto el checkbox deberia automaticamente marcado. </li>
+        <li>Un objeto tiene <b>Propiedades</b> (que describen al objeto) y <b>Metodos</b> (lo que el objeto puede
+            hacer). La diferencia entre un <b>metodo</b> y una <b>funcion</b> es que un metodo esta asociado a un
+            objeto.</li>
+    </ul>
+    <h3>Reto</h3>
+    <p>Cambiar el tercer elemento del DOM de <b>third</b> a tu nombre usando solo la terminal.</p>
+    <code>document.querySelector("ul").lastElementChild.innerHTML = "Gino";</code>
+    <hr>
+    <h2>Document Object Model - DOM - 2</h2>
+    <ul>
+        <li><code>document.getElementsByTagName("li")[2].style.color = "red";</code> nos permite obtener los elementos
+            por tag, retorna un array con todos los elementos del tag li, accedemos al tercero y cambiamos su color a
+            rojo. Tambien podemos usar el <code>.length</code> para saber cuantos elementos tiene el array. </li>
+        <li>Con <code>document.getElementsByClassName("btn")[0].style.backgroundColor = "black";</code> obtenemos los
+            elementos por clase.</li>
+        <li><code>document.getElementById("list")style.color = "blue";</code> nos retorna el elemento por su ID.</li>
+        <li>Con <code>.querySelector()</code>podemos seleccionar elementos, clases (con un . antes) e IDs (con un #
+            antes). Tambien se pueden combinar.
+            <br> Ej: Para el siguiente codigo
+            <div class="row">
+                <div class="col-7">
+                    <code>
+                        <pre>
+    &lt;!DOCTYPE html&gt;
+    &lt;html lang="en"&gt;
+
+    &lt;head&gt;
+        &lt;meta charset="UTF-8"&gt;
+        &lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;
+        &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+        &lt;title&gt;DOM&lt;/title&gt;
+        &lt;link rel="stylesheet" href="demo3.css"&gt;
+    &lt;/head&gt;
+
+    &lt;body&gt;
+        &lt;h1 id="title"&gt;Hello&lt;/h1&gt;
+        &lt;a href="https://www.google.com/"&gt;Google&lt;/a&gt; &lt;br&gt;
+        &lt;input type="checkbox"&gt;
+        &lt;button class="btn"&gt;Click Me&lt;/button&gt;
+        &lt;ul id="list"&gt;
+            &lt;li class="item"&gt;&lt;a href="https://www.google.com/"&gt;Google&lt;/a&gt;&lt;/li&gt;
+            &lt;li class="item"&gt;Second&lt;/li&gt;
+            &lt;li class="item"&gt;Third&lt;/li&gt;
+        &lt;/ul&gt;
+
+        &lt;footer&gt;
+            &lt;script src="demo3.js" charset="utf-8"&gt;&lt;/script&gt;
+        &lt;/footer&gt;    
+    &lt;/body&gt;    
+    &lt;/html&gt;
+                        </pre>
+                    </code>
+                </div>
+                <div class="col-5">
+                    <img src="resources/img1.png" alt="imagen"><br><br>
+                    Tambien se puede combinar selectores. Aquellos que estan separados (fuera de un mismo &lt;&gt;)
+                    tienen un espacio y los que estan dentro de un mismo &lt;&gt; no llevan espacio. <br>
+                    <img src="resources/img2.png" alt="imagen2">
+                </div>
+            </div>
+        </li>
+        <li>En el ultimo query del ejemplo anterior buscamos un ID list que tenga dentro la clase item, existen 3 de
+            estos. <code>.querySelector()</code> solo nos retorna el primero. En caso queramos obtener todos se debe
+            usar <code>querySelectorAll()</code> que nos retornaría un array y podemos acceder a sus elementos con
+            <code>[]</code><br>
+            <img src="resources/img3.png" alt="imagen3">
+        </li>
+    </ul>
+    <hr>
+    <h2>Manipular estilos de elementos HTML con JavaScript</h2>
+    <p>Cuando obtenemos un elemento y queremos camnbiar su propiedad en CSS sería <code>background-color: yellow;</code>
+        Sin embargo en JavaScript se utiliza el <em>Camel Casing</em>: la palabra empieza con minuscula y la siguiente
+        con mayuscula. Podemos encontrar las equivalencias aquí: <a
+            href="https://www.w3schools.com/jsref/dom_obj_style.asp">HTML DOM Style Object</a>. Otra cosa importante es
+        que todos los valores que se asignen deben estar dentro de un string ("").</p>
+    <h3>RETO</h3>
+    <p>Cambiar el color de fondo del boton</p>
+    <code>document.querySelector("button").style.backgroundColor = "yellow";</code>
+    <hr>
+    <h2>Separacion de intereses</h2>
+    <ul>
+        <li>Estructura: HTML</li>
+        <li>Estilo: CSS</li>
+        <li>Comportamiento: JavaScript</li>
+        <li>En lugar de cambiar estilos con <code>.querySelector().style.color</code> mejor usar <code>.classList</code>
+            que nos retorna un array de las clases que tiene algun elemento. Se puede hacer
+            <code>.add() .remove() .toggle()</code> para agregar, eliminar respsectivamente, y el ultimo para agregar en
+            caso no esté o eliminar en caso ya esté. <br> <br>
+            Ej: <code>document.querySelector("h1").classList.add("invisible");</code> y no modificar directamente el
+            estilo, sino que en el archivo css especificar el selector <code>.invsible</code>
+        </li>
+    </ul>
+    <h3>RETO</h3>
+    <p>Crear una clase <code>huge</code> que tenga <code>font-size 10rem</code> y aplicarlo al h1 usando javascript</p>
+    <div class="row">
+        <div class="col-6">
+            <code><pre>
+    <b>-- css --</b>
+    .huge{
+        font-size: 10rem;
+        color: red;
+        font-weight: bold;
+    }
+            </pre></code>
+        </div>
+        <div class="col-6">
+            <code><pre>
+    <b>-- consola --</b>
+    &gt; document.querySelector("h1").classList.add("huge");
+            </pre></code>
+        </div>
+    </div>
+    <hr>
+    <h2>Manipulacion de texto y la propiedad <em>Text Content</em></h2>
+    <p>
+        Hasta ahora hemos podido cambiar el contenido de algun elemento usando <code>.innerHTML</code> pero este retorna literalmente el HTML interno. Una mejor opcion seria usar <code>.textContent</code> <br>
+        Ejemplo:    
+    </p>
+    <div class="row">
+        <div class="col-6">
+            <code><b>-- html --</b> <br>
+                ... <br>
+                &lt;h1 id="title"&gt;&lt;em&gt;Hello&lt;/em&gt;&lt;/h1&gt; <br>
+                ...
+            </code>
+        </div>
+        <div class="col-6">            
+            <code><pre>
+<b>-- consola --</b> <br>
+&gt; document.querySelector("h1").innerHTML;
+-&gt;   &lt;em&gt;Hello&lt;/em&gt; <br>
+
+&gt; document.querySelector("h1").textContent;
+-&gt;   Hello
+            </pre></code>
+        </div>
+    </div>
+    <hr>
+    <h2>Manipulando los atributos de elementos HTML</h2>
+    <p>
+        Los atributos son: <code>class href rel</code>y podemos acceder a ellos con <code>.attributes</code> que nos retorna una array de los atributos que tiene ese elemento. Podemos obtener el atributo con <code>.getAttribute("&lt;atributo&gt;");</code> y establecer el atributo con <code>.setAttribute("&lt;atributo&gt;", "&lt;valor&gt;");</code> <br>
+        Ej: podemos cambiar el href de un link: <br>
+        <code>document.querySelector("a").setAttribute("href", "https://www.bing.com");</code>
+    </p>
+    
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
