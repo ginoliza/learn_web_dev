@@ -136,7 +136,8 @@
     $("h1").removeClass("big-title");        </pre>
     </code>
     <p>
-        El metodo <code>.hasClass(&lt;clase&gt;)</code> se usa para verificar si un elemento tiene una clase o no. Esto retorna un valor booleano.
+        El metodo <code>.hasClass(&lt;clase&gt;)</code> se usa para verificar si un elemento tiene una clase o no. Esto
+        retorna un valor booleano.
     </p>
     <code>
         <pre>
@@ -144,10 +145,178 @@
     &gt; true        </pre>
     </code>
     <hr>
+    <h2>Manipular texto</h2>
+    <p>
+        La primera forma es usar el metodo <code>.text("&lt;Texto&gt;")</code> (equivalente a
+        <code>.textContent</code>). <br> Ej:
+    </p>
+    <code>
+        <pre>
+    $("h1").text("Otra cosa");</pre>
+    </code>
+    <p>
+        Otra forma es usar el atributo <code>.html("&lt;texto&gt;")</code> (equivalente a <code>innerHTML</code>) y
+        reemplazar literalmente todo el HTML dentro de ese elemento. <br> Ej:
+    </p>
+    <code>
+        <pre>
+    $("h1").html("&lt;em&gt;Algo cursivo&lt;em&gt;");</pre>            
+    </code>
     <hr>
+    <h2>Manipular atributos</h2>
+    <p>
+        Con el metodo <code>.attr("&lt;atributo&gt;")</code> podemos acceder y establecer atributos como
+        <code>src href</code> e incluso <code>class</code>, etc<br> Ej:
+    </p>
+    <div class="row">
+        <div class="col-md-6">
+            <code>
+                <pre>
+    <b>-- acceder --</b>
+    $("h1").attr("class");
+    &gt; 'big-title'                </pre>
+            </code>
+        </div>
+        <div class="col-md-6">
+            <code>
+                <pre>
+    <b>-- establecer --</b>
+    $("h1").attr("class", "huge-title");</pre>
+            </code>
+        </div>
+    </div>
     <hr>
+    <h2>Event Listeners</h2>
+    <h3>Clicks</h3>
+    <p>
+        Podemos simplemente usar <code>.click(&lt;funcion&gt;)</code> en lugar de su equivalente en javascript
+        <code>document.querySelector("&lt;selector&gt;").addEventListener("click", &lt;funcion&gt;);</code> <br> Ej:
+    </p>
+    <code>
+        <pre>
+    $("h1").click(function () {
+        $("h1").css("color", "purple");
+    });        </pre>
+    </code>
+    <p>
+        Si queremos cambiar el color de TODOS los botones en jquery es mas facil, ya que no tenemos que iterar, obtener
+        el tamaño del array, etc. <br> Ej:
+    </p>
+    <div class="row">
+        <div class="col-md-6">
+            <code>
+                <pre>
+    <b>-- jquery --</b>                    
+    $("button").click(
+        function () {
+            $("button").css("background-color", "purple");
+        }
+    );</pre>
+            </code>
+        </div>
+        <div class="col-md-6">
+            <code>
+                <pre>
+    <b>-- javascript --</b>                    
+    document.querySelectorAll("button").addEventListener("click",function () {
+        document.querySelectorAll("button").style.backgroundColor = "purple";
+        }
+    );</pre>
+            </code>
+        </div>
+    </div>
+    <h3>Teclado</h3>
+    <p>Podemos usar el metodo <code>.keypress("&lt;funcion&gt;")</code> y el <code>event</code> para un elemento
+        especifico:</p>
+    <code>
+        <pre>
+    $("input").keypress(function (event) {
+        console.log(event.key);
+        });        </pre>
+    </code>
+    <p>
+        O tambien podemos detectar teclas presionadas en toda la pagina web sin especificar un selector, sino todo el
+        documento:
+    </p>
+    <code>
+        <pre>
+    $(document).keypress(function (event) {
+        console.log(event.key);
+        });        </pre>
+    </code>
+    <h3>RETO</h3>
+    <p>
+        Que la tecla presionada en la pagina web se muestre en el h1.
+    </p>
+    <code>
+        <pre>
+    $(document).keypress(function (event) {
+        $("h1").text(event.key);
+    });        </pre>
+    </code>
+    <h3>Metodo <code>.on</code></h3>
+    <p>
+        Algo mas flexible puede ser usar el metodo <code>.on("evento", &lt;funcion&gt;);</code>. El primer parametro es
+        el evento que se esta escuchando y el segundo parametro es lo que pasa cuando el evento ocurre. <a
+            href="https://developer.mozilla.org/en-US/docs/Web/Events">Lista de eventos</a> <br> Ej:
+    </p>
+    <code>
+        <pre>
+    $("h1").on("mouseover", function () {
+        $("h1").css("color", "purple");
+    });</pre>
+    </code>
     <hr>
+    <h2>Agregar y quitar elementos</h2>
+    <p>
+        Con los metodos
+        <code>.before("&lt;html&gt;") .after("&lt;html&gt;") .prepend("&lt;html&gt;") .append("&lt;html&gt;")</code>.
+    </p>
+    <ul>
+        <li><b>before: </b> agrega el elemento antes del elemento seleccionado</li>
+        <li><b>after: </b> agrega el elemento despues del elemento seleccionado</li>
+        <li><b>prepend: </b> agrega el elemento antes del contenido del elemento seleccionado</li>
+        <li><b>arepend: </b> agrega el elemento despues del contenido del elemento seleccionado</li>
+        Ej:
+    </ul>
+    <code>
+        <pre>
+    $("h1").after("&lt;h1&gt; Hello2 &lt;/h1&gt;");        </pre>
+    </code>
+    <p>
+        Y para eliminar elementos usamos el metodo <code>.remove();</code> <br> Ej:
+    </p>
+    <code>
+        <pre>
+    $("button").remove();        </pre>
+    </code>
     <hr>
+    <h2>Animaciones</h2>
+    <p>
+        Podemos usar los metodos: <code>.hide() .show()</code> o alternar entre ambos con <code>.toggle()</code>. <br>
+        Puede que esto parezca muy brusco, asi que hay animaciones como
+        <code>.fadeOut() .fadeIn() .fadeToggle() .slideUp() .slideDown() .slideToggle()</code> <br>
+        Tambien podemos usar nuestra propia animacion con el metodo <code>.animate({&lt;codigo css&gt;})</code>:
+    </p>
+    <code>
+        <pre>
+    $("h1").animate({opacity: 0.5});        </pre>
+    </code>
+    <p>
+        Pero aqui podemos solamente animar con valores numericos, por ejemplo no podemos cambiar a
+        <code>color: red;</code> ya que no es un valor numerico.
+    </p>
+    <h3>Concatenar animaciones</h3>
+    <p>
+        Las animaciones se pueden concatenar para que ocurran una despues de la otra:
+    </p>
+    <code>
+        <pre>
+    $("h1").slideUp().slideDown().animate({opacity: 0.3});        </pre>
+    </code>
+    <p>
+        Podemos visitar todos los efectos <a href="http://api.jquery.com/category/effects/">aqui</a>.
+    </p>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"></script>
