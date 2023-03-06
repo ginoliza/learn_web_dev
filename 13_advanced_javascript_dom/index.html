@@ -64,14 +64,14 @@
     <hr>
     <h2>Funciones de orden mas alto y pasar funciones como argumentos. Debugger</h2>
     <p>
-        Las funciones que pueden tomar otras funciones como argumento se llaman funciones de orden mas alto. <br> <br>
+        Son funciones que pueden tomar otras funciones como argumento. <br> <br>
         Ejemplo: Para una calculadora por ejemplo podriamos declarar cada funcion individualmente pero tendriamos que
         llamar una
         funcion diferente cada vez. Que tal si queremos simplemente llamar a la calculadora y especificar la operacion
         como un parametro?
     </p>
     <code>
-        <pre>
+        <pre>    
     function add(num1, num2){
         return num1+num2;
     }
@@ -143,7 +143,7 @@
         Al hacer click en la imagen w, esto es retornado por consola:
     </p>
     <div class="row">
-        <div class="col-6">
+        <div class="col-md-6">
             <code>
                 <pre>
     <b>-- index.js --</b>
@@ -157,7 +157,7 @@
                 </pre>
             </code>
         </div>
-        <div class="col-6">
+        <div class="col-md-6">
             <code>
                 <pre>
     <b>-- console --</b>
@@ -174,7 +174,7 @@
         Hacer que al clickear el boton cambie su color a blanco.
     </p>
     <div class="row">
-        <div class="col-6">
+        <div class="col-md-6">
             <code>
                 <pre>
     <b>-- index.js solucion 1 --</b>
@@ -184,7 +184,7 @@
                 </pre>
             </code>
         </div>
-        <div class="col-6">
+        <div class="col-md-6">
             <code>
                 <pre>
     <b>-- index.js solucion 2 --</b>
@@ -217,7 +217,7 @@
             <p>
                 Usar y acceder a los atributos
             </p>
-    <code>
+            <code>
         <pre>
     <b>-- index.js --</b>
     houseKeeper1.name;
@@ -231,7 +231,7 @@
         Pero crear objetos de esta manera consume mucho tiempo. Asi que podemos usar una <b>Funcion Constructor</b>.
     </p>
     <div class="row">
-        <div class="col-6">
+        <div class="col-md-6">
             <code>
                 <pre>
     <b>-- funcion constructor --</b>
@@ -243,9 +243,9 @@
     }           
                 </pre>
             </code>
-            
+
         </div>
-        <div class="col-6">
+        <div class="col-md-6">
             <code>
                 <pre>
     <b>-- inicializar objeto --</b>
@@ -279,7 +279,175 @@
     }    
         </pre>
     </code>
+    <hr>
+    <h2>Objetos - Métodos</h2>
+    <p>
+        Los metodos son las acciones que puede tomar un objeto. La diferencia entre acceder a atributos y a metodos son
+        los <code>()</code>.
+    </p>
+    <div class="row">
+        <div class="col-md-6">
+            <code>
+                <pre>
+    <b>-- metodo en la funcion constructor --</b>
+    function BellBoy(name, age, hasWorkPermit, languages){
+        this.name = name;
+        ...
+        // Metodo
+        this.moveSuitcase = function(){
+            alert("May I take your suitcase?");        
+        }
+    }
+                </pre>
+            </code>
+        </div>
+        <div class="col-md-6">
+            <code>
+                <pre>
+    <b>-- llamar al metodo --</b>
+    var bellboy1 = new BellBoy("Timmy", 19, true, ["French", "English"]);
+    bellboy1.name;
+    bellboy1.moveSuitCase();            
+                </pre>
+            </code>
+        </div>
+    </div>
+    <hr>
+    <h2>Detectar entradas por teclado</h2>
+    <p>
+        En el <code>.addEventListener("keydown", &lt;funcion&gt;){}</code> <br>
+        Ejemplo: Podemos agregar un Event Listener a toda la pagina web para que escuche si las teclas se presionan.
+    </p>
+    <code>
+        <pre>
+    document.addEventListener("keypress", function(){
+        alert("una tecla fue presionada") ;
+        });
+        </pre>
+    </code>
+    <h3>Como identificar qué tecla fue presionada</h3>
+    <p>
+        Agregamos <code>event</code> como parametro de <code>function</code>. El <code>event</code> es un array del
+        evento que acaba de suceder (la tecla que se acaban de presionar). Al imprimir el <code>event</code> nos bota
+        esto:
+    </p>
+    <code>
+        <pre>
+    &gt; KeyboardEvent {isTrusted: true, key: 'q', code: 'KeyQ', location: 0, ctrlKey: false,}
+        </pre>
+    </code>
+    <p>
+        Podemos acceder a cada uno de estos atributos, el que nos interesa para el proyecto es
+        <code>key</code>. El codigo para que suene tanto con botones como con clicks es:
+    </p>
+    <code>
+        <pre>
+    <b>-- index.js --</b>
+    // CLICKS
+    // Obtener el tamaño del array de botones 
+    var len = document.querySelectorAll(".drum").length;
+    
+    // Iterar por todo el array de botones
+    for (var i = 0; i < len; i++) {
+        document.querySelectorAll(".drum")[i].addEventListener("click", function () {
+            makeSound(this.innerHTML);
+        });
+    }
+    
+    // TECLADO
+    document.addEventListener("keydown", function (event) {
+        makeSound(event.key);
+    })
+    
+    // FUNCION 
+    function makeSound(key) {
+        switch (key) {
+            case "w":
+                audio = new Audio("sounds/tom-1.mp3");
+                audio.play();
+                break;
+            case "a":
+                audio = new Audio("sounds/tom-2.mp3");
+                audio.play();
+                break;
+            case "s":
+                audio = new Audio("sounds/tom-3.mp3");
+                audio.play();
+                break;
+            case "d":
+                audio = new Audio("sounds/tom-4.mp3");
+                audio.play();
+                break;
+            case "j":
+                audio = new Audio("sounds/snare.mp3");
+                audio.play();
+                break;
+            case "k":
+                audio = new Audio("sounds/crash.mp3");
+                audio.play();
+                break;
+            case "l":
+                audio = new Audio("sounds/kick-bass.mp3");
+                audio.play();
+                break;
+            default:
+                break;
+        }
+    }    
+        </pre>
+    </code>
+    <p>
+        Resumiendo: tenemos una funcion <code>makeSound</code> que recibe <code>key</code> como parametro. Para que
+        suene tenemos dos casos:
+    </p>
+    <ul>
+        <li>Con clicks: le pasamos <code>this.innerHTML</code></li>
+        <li>Con teclas: le pasamos el <code>event</code> capturado de presionar una tecla y accedemos a su parametro
+            <code>key</code>
+        </li>
+    </ul>
+    <hr>
+    <h2>Entendiendo funciones Callbacks y como responder a Eventos</h2>
+    <p style="color: red;">
+        No entiendo :(
+    </p>
+    <hr>
+    <h2>Animación</h2>
+    <p>
+        Creamos una funcion <code>buttonAnimation</code> que toma como parametro la tecla presionada. Obtenemos el
+        selector con <code>querySelector</code>, concatenando con un <code>.</code> ya que <code>currentKey</code> solo
+        nos retorna un caracter y agregamos la clase <code>pressed</code> a sus clases. Luego simplemente llamamos a la
+        funcion <code>buttonAnimation(&lt;tecla&gt;)</code>
+        debajo de tocar el sonido tanto para clicks como para teclas presionadas.
+    </p>
+    <code>
+        <pre>
+    <b>-- index.js --</b>
+    function buttonAnimation(currentKey){
+        var activeButton = document.querySelector("."+currentKey);
+        activeButton.classList.add("pressed");    
+    }
+        </pre>
+    </code>
+    <h3>Timeout - tiempo de espera</h3>
+    <p>
+        Finalmente queremos remover la clase <code>pressed</code> despues de 100ms para que de una ilusion de animacion.
+        Esto lo podemos lograr con la funcion <code>setTimeout(&lt;funcion&gt;, &lt;tiempo&gt;)</code> cuyo primer
+        parametro es lo que ocurre despues de que ha transcurrido en el segundo parametro.
+    </p>
+    <code>
+        <pre>
+    function buttonAnimation(currentKey){
+        var activeButton = document.querySelector("."+currentKey);
+        activeButton.classList.add("pressed");
+        
+        setTimeout(function(){
+            activeButton.classList.remove("pressed");
+        },100);
 
+    }
+        </pre>
+    </code>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"></script>
