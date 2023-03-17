@@ -30,27 +30,27 @@ $(".btn").click(function () {
     var userChosenColour = this.id;
     userClickedPattern.push(userChosenColour);
     playSound("sounds/" + userChosenColour + ".mp3");
-    animatePress(userChosenColour);
-    checkAnswer(userClickedPattern.length - 1);
+    animatePress(userChosenColour);    
+    checkAnswer(userClickedPattern.length - 1); 
 });
 
-$(document).keypress(function () {
+$(document).keypress(function (event) {
     if (started === false) {
         nextSequence();
         started = true;
-
         $("h1").text("Level " + level);
     }
 });
 
-function checkAnswer(currentLevel) {
-    if (userClickedPattern[currentLevel]===gamePattern[currentLevel]) {
-        console.log("success");
-        setTimeout(() => {
-            nextSequence();
-        }, 1000);
+function checkAnswer(currentLevel) {    
+    if (userClickedPattern[currentLevel] === gamePattern[currentLevel]) { 
+        if (userClickedPattern.length === gamePattern.length) {
+            setTimeout(() => {
+                nextSequence();
+                userClickedPattern = [];
+            }, 1000);
+        }
     } else {
-        console.log("wrong");
+        console.log('wrong');
     }
 }
-
