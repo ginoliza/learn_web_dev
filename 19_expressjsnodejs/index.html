@@ -109,8 +109,101 @@
         Hasta ahora cada que hicimos un cambio en el codigo, tuvimos que reiniciar manualmente el servidor node, podemos
         evitar esto instalando <code>nodemon</code> con <code>npm install -g nodemon</code>. Entonces ya no iniciamos el
         servidor con <code>node server.js</code> sino con <code>nodemon server.js</code>. Cada vez que hagamos un
-        cambio, el servidor se recargara automaticamente. 
+        cambio, el servidor se recargara automaticamente.
     </p>
+    <hr>
+    <h2>Responder a requests con archivos HTML</h2>
+    <p>
+        Usaremos el proyecto <a href="Calculator/index.html">Calculadora</a>. <br>
+        Para poder retornar un archivo <code>html</code> en lugar de texto debemos usar el metodo <code>sendFile</code>
+        y como parametro especificar el archivo.
+    </p>
+    <div class="row">
+        <div class="col-md-6">
+            <code>
+                <pre>
+    <b>-- index.js --</b>
+    app.get('/', (req, res) => {
+        res.sendFile(__dirname + "/index.html");
+    })                </pre>
+            </code>
+        </div>
+        <div class="col-md-6">
+            <code>
+                <pre>
+    <b>-- index.html --</b>
+    &lt;body>
+        &lt;h1>Calculadora&lt;/h1>
+        &lt;form action="index.html" method="post">
+            &lt;input type="text" name="num1" placeholder="First Number">
+            &lt;input type="text" name="num2" placeholder="Second Number">
+            &lt;button type="submit" name="submit">Calculate&lt;/button>
+        &lt;/form>
+    &lt;/body>                </pre>
+            </code>
+        </div>
+    </div>
+    <p>
+        <code>__dirname</code> obtiene la ruta relativa de donde se encuentra el archivo. A esto le sumamos el archivo
+        que queremos que se muestre cuando se accede a la ruta raiz.
+    </p>
+    <hr>
+    <h2>Procesando post requests con el body parser</h2>
+    <p>
+        Si ahora ponemos dos numeros e intentamos calcular obtendremos un error <code>Cannot POST /index.html</code>.
+        Esto porque estamos enviando los datos a <code>/index.html</code>, queremos enviar a la raiz <code>/</code>. Asi
+        que cambiamos la <code>action</code> del <code>form</code> a:
+    </p>
+    <code>
+        <pre>
+    ...
+    &lt;form action="/" method="post">
+    ...        </pre>
+    </code>
+    <p>
+        Aun asi tendremos un error ya que no tenemos nada en <code>calculator.js</code> que procese post requests. Por
+        lo tanto debemos añadir:
+    </p>
+    <code>
+        <pre>
+    app.post('/', (req, res) => {
+        res.send("Recibido");
+    })        </pre>
+    </code>
+    <h3>Body parser</h3>
+    <p>
+        Aun no podemos manipular los numeros y sumarlos, para esto debemos instalar el modulo body parser con
+        <code>npm install body-parser</code>. Luego debemos requerirlo en <code>calculator.js</code>, hacer que la app
+        lo use, y entonces podemos acceder a los elementos del html con <code>req.body.num1</code>. Es importante notar
+        que esto sale a partir del atributo <code>name</code> del <code>input</code> del <code>html</code>. Tambien es
+        necesario convertir las variables a numeros ya que por defecto son strings y no se sumarian, se concatenarian. 
+    </p>
+    <code>
+        <pre>
+    const express = require('express');
+    const bodyParser = require('body-parser');
+    
+    const app = express();
+    app.use(bodyParser.urlencoded({extended:true}));
+    
+    const port = 3000;
+    
+    app.get('/', (req, res) => {
+        res.sendFile(__dirname + "/index.html");
+    });
+    
+    app.post('/', (req, res) => {
+        var n1 = Number(req.body.num1);
+        var n2 = Number(req.body.num2);
+        var result = n1 + n2;
+        
+        res.send("El resultado es " + result);
+    });
+    
+    app.listen(port, () => {
+        console.log(`Example app listening on port ${port}`)
+    });        </pre>
+    </code>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
         integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
         crossorigin="anonymous"></script>
