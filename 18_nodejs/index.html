@@ -87,6 +87,30 @@
         el contenido de <code>file1.txt</code> en <code>file2.txt</code>. En caso el archivo ya exista simplemente se
         reemplaza. Al ejecutar el codigo se creará <code>file2.txt</code> con el contenido de <code>file1.txt</code>
     </p>
+    <hr>
+    <h2>npm e instalar modulos externos de node</h2>
+    <p>
+        npm viene instalado por defecto cuando instalamos node. Podemos setear las opciones iniciales del proyecto
+        corriendo <code>npm init</code> y siguiendo paso a paso; al terminar vemos que se ha creado un package.json que
+        es basicamente la descripcion de nuestro proyecto. Podemos buscar modulos para instalar desde npmjs.com. <br>
+        Como ejemplo instalaremos el paquete superheroes con:
+    </p>
+    <code>
+        <pre>
+    npm install superheroes        </pre>
+    </code>
+    <p>
+        Y modificaremos el archivo index.js para que requiera el paquete e imprima un nombre aleatorio de superheroe:
+    </p>
+    <code>
+        <pre>
+    const superheroes = require('superheroes'); 
+    console.log(superheroes.random());</pre>
+    </code>
+    <p>
+        Luego simplemente lo corremos con <code>node index.js</code>. Podemos observar tambien que se crea el directorio
+        node_modules que contiene todos los paquetes instalados. 
+    </p>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
         integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
         crossorigin="anonymous"></script>
