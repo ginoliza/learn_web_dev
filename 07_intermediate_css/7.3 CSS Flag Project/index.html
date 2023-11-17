@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>CSS Flag Project</title>
+  <style>
+    /* Write your CSS Code here */
+    /* CE1126 002868 */
+    /* bandera general */
+    .flag{
+      height: 600px;
+      width: 900px;
+      background-color: #CE1126;
+      position: absolute;
+    }    
+    p{
+      font-size: 5rem;
+      margin: 0;
+    }    
+    /* The flag */
+    .flag > p{
+      color: white;
+    }
+
+    /* of laos */
+    div p{
+      color: black;
+      text-align: center;
+    }
+
+    /* circulo blanco */
+    div > div > div{
+      height: 200px;
+      width: 200px;
+      border-radius: 50%;
+      background-color: white;      
+      left: 350px;
+    }
+
+    /* parte azul */
+    div > div{      
+      background-color: #002868;
+      height: 50%;
+      width: 100%;
+      position: absolute;
+      margin: 0;
+      top: 50%;
+      -ms-transform: translateY(-50%);
+      transform: translateY(-50%);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="flag">
+    <p>The Flag</p>
+    <div id="azul">
+      <div id="circulo">
+        <p>of Laos</p>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
